@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Students from './_components/Students';
+import Texts from './_components/Texts';
 
 const LOGO = 'https://drive.google.com/thumbnail?id=1ayFFlwsu2AW6RSq6TOUj0Gx8EKf72luM&sz=w200';
 const NAV = [
@@ -105,8 +106,9 @@ export default function Home() {
         )}
 
         {panel === 'students' && <Students rows={students} />}
+        {panel === 'texts' && <Texts rows={students} />}
 
-        {(panel === 'texts' || panel === 'schedule' || panel === 'online') && (
+        {(panel === 'schedule' || panel === 'online') && (
           <>
             <div className="top-title"><div><h1>{NAV.find((n) => n.id === panel).label.replace(/^[^\s]+\s/, '')}</h1></div></div>
             <div className="card empty">🚧 กำลังย้ายระบบส่วนนี้ — เร็วๆ นี้</div>
