@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Students from './_components/Students';
 import Texts from './_components/Texts';
 import Online from './_components/Online';
+import Schedule from './_components/Schedule';
 
 const LOGO = 'https://drive.google.com/thumbnail?id=1ayFFlwsu2AW6RSq6TOUj0Gx8EKf72luM&sz=w200';
 const NAV = [
@@ -52,6 +53,7 @@ export default function Home() {
 
   const students = (data && data.students) ? data.students : [];
   const onlineRows = (data && data.online) ? data.online : [];
+  const scheduleRows = (data && data.schedule) ? data.schedule : [];
   const dash = computeDashboard(students);
   const dashFiltered = dash.filter((it) => (!dGrade || it.grade === dGrade) && (!dCourse || it.courseNo === dCourse));
   const onsite = sumByType(dashFiltered, 'onsite');
@@ -111,12 +113,7 @@ export default function Home() {
         {panel === 'texts' && <Texts rows={students} />}
         {panel === 'online' && <Online rows={onlineRows} />}
 
-        {panel === 'schedule' && (
-          <>
-            <div className="top-title"><div><h1>ตารางเรียน</h1></div></div>
-            <div className="card empty">🚧 กำลังย้ายระบบส่วนนี้ — เร็วๆ นี้</div>
-          </>
-        )}
+        {panel === 'schedule' && <Schedule rows={scheduleRows} />}
       </main>
     </div>
   );

@@ -88,3 +88,39 @@ tbody tr:nth-child(even) td { background: #fffafa; }
   .info-cell:nth-child(odd) { border-right: 0; }
   h1 { font-size: 22px; }
 }
+
+/* ===== ตารางเรียน: timeline + calendar ===== */
+.timeline-wrap { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:auto; }
+.timeline-head, .timeline-body { display:grid; }
+.timeline-head > div { padding:10px; font-weight:900; color:var(--red-dark); text-align:center; border-left:1px solid var(--line); }
+.timeline-head > div:first-child { border-left:0; }
+.timeline-body { position:relative; }
+.axis, .room-col { position:relative; }
+.room-col { border-left:1px solid var(--line); }
+.hour-line { position:absolute; left:0; right:0; border-top:1px dashed #e5e7eb; font-size:11px; color:var(--muted); padding-left:6px; }
+.event { position:absolute; left:4px; right:4px; border-radius:10px; padding:6px 8px; color:#374151; overflow:hidden; border-left:4px solid rgba(0,0,0,.2); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+.sub-วิทยาศาสตร์ { background:var(--sci); }
+.sub-คณิตศาสตร์ { background:var(--math); }
+.sub-ภาษาไทย { background:var(--thai); }
+.sub-สังคมศึกษา { background:var(--soc); }
+.sub-ภาษาอังกฤษ { background:var(--eng); }
+.sub-ไทย-สังคม { background:var(--thai); }
+.teacher-head { display:flex; align-items:center; gap:12px; }
+.teacher-head img { width:60px; height:60px; object-fit:cover; border-radius:14px; background:var(--red-soft); }
+.teacher-noimg { width:60px; height:60px; border-radius:14px; background:var(--red-soft); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:24px; color:var(--red-dark); }
+.sec-title { font-weight:900; color:var(--red-dark); font-size:16px; margin-bottom:10px; }
+.cal-legend { display:flex; align-items:center; gap:6px; color:var(--muted); font-weight:700; margin-bottom:12px; font-size:13px; }
+.cal-legend .dot { width:14px; height:14px; border-radius:4px; display:inline-block; }
+.dot.sat { background:#e9d5ff; }
+.dot.sun { background:#fbcfe8; }
+.cal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.cal-month { border:1px solid var(--line); border-radius:14px; padding:12px; background:#fff; }
+.cal-title { font-weight:900; color:var(--red-dark); margin-bottom:8px; }
+.cal-days { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.cal-h { text-align:center; font-size:11px; font-weight:800; color:var(--muted); padding-bottom:4px; }
+.cal-h.we { color:var(--red); }
+.cal-cell { text-align:center; padding:7px 0; font-size:13px; border-radius:8px; color:#334155; }
+.cal-cell.empty { background:transparent; }
+.cal-cell.sat { background:#e9d5ff; font-weight:800; color:#6b21a8; }
+.cal-cell.sun { background:#fbcfe8; font-weight:800; color:#9d174d; }
+@media (max-width:900px){ .cal-grid{grid-template-columns:1fr;} .event{font-size:11px;line-height:1.25;padding:6px 8px;} .event b{font-size:12px;} }
