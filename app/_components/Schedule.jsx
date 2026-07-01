@@ -17,7 +17,14 @@ const pad2 = (n) => ('0' + n).slice(-2);
 
 function parseThaiDate(x) {
   const s = String(x == null ? '' : x).trim();
-  const m = s.match(/^(\d{1,2})\/(.+?)\/(\d{2,4})$/);
+  // รูปแบบใหม่: dd/mm/yyyy ค.ศ. (เช่น 15/03/2026) — ปีเต็ม 4 หลัก
+  let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (m) {
+    const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+  // fallback: รูปแบบเดิม เดือนย่อไทย + ปี 2 หลัก (เช่น 15/มี.ค./26)
+  m = s.match(/^(\d{1,2})\/(.+?)\/(\d{2,4})$/);
   if (!m) return null;
   const day = Number(m[1]); const mon = TH_MONTH[m[2].trim()];
   if (mon === undefined) return null;
