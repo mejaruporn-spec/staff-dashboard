@@ -24,5 +24,6 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  // ยกเว้น api/sync (ป้องกันด้วย SHEET_TOKEN ของตัวเอง) เพื่อให้ Apps Script trigger ยิงได้ไม่ต้องมี staff_key
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|api/sync).*)'],
 };
